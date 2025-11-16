@@ -268,10 +268,10 @@ The OpenROAD flow executes these stages automatically:
 #### What Happens
 Yosys converts Verilog RTL into a gate-level netlist using SKY130 standard cells.
 
-#### Commands
+
 ```
 cd ~/OpenROAD-flow-scripts/flow
-make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 ```
 
 #### Key Results
@@ -294,6 +294,12 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk
 - Inserts tap cells (23,625 cells for substrate connections)
 - Generates Power Distribution Network (PDN)
 
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
+```
+
+
+
 #### Key Results
 - **Design area**: 722,267 μm²
 - **Utilization**: 29%
@@ -313,6 +319,11 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk
 - **Global placement**: Roughly positions all 29,885 instances
 - **Resizing**: Optimizes cell sizes for timing
 - **Detailed placement**: Finalizes legal cell positions with optimization
+
+```
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_place
+```
 
 #### Optimization Algorithms Used
 1. Set matching optimization
@@ -358,15 +369,12 @@ Builds a balanced H-Tree clock distribution network using TritonCTS algorithm.
 - **Average wire length**: 1,371.72 μm per sink
 - **Timing**: No setup violations, no hold violations ✓
 
-#### Commands
+
 ```
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk cts
 ```
 
-
 <img width="3840" height="2486" alt="image" src="https://github.com/user-attachments/assets/f6d3930e-b870-46d9-8223-cfcc643f51cf" />
-
-
 
 ---
 
@@ -458,4 +466,3 @@ OpenROAD-flow-scripts/
 
 ***
 
-This README provides a complete, professional documentation of your Week 7 physical design flow. Simply add your screenshots in the designated placeholder sections throughout the document. The README explains not just the "how" but also the "why" at each step, making it valuable for anyone trying to understand or reproduce the flow.
